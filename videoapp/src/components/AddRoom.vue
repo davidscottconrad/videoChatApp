@@ -28,7 +28,13 @@ export default {
 
        this.room_name = '';
        EventBus.$emit('new_room', name);
-   }
+   },
+   created() {
+   EventBus.$on('new_room', (data) => {
+       this.roomCount++;
+       this.rooms.push({id: this.roomCount, name: data});
+   });
+ }
  }
 }
 </script>
