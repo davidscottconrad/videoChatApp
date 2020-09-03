@@ -28,6 +28,10 @@ export default {
    AddRoom // imported AddRoom component
  },
  created() {
+     EventBus.$on('new_room', (data) => {
+       this.roomCount++;
+       this.rooms.push({id: this.roomCount, name: data});
+   });
  },
  methods: {
    showRoom(room) {
